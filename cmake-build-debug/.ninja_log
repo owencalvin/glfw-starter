@@ -1,0 +1,26 @@
+# ninja log v5
+0	240	1654617692280460044	libs/glfw/src/CMakeFiles/glfw.dir/context.c.o	37983275fa482e6a
+0	242	1654617692281733184	libs/glfw/src/CMakeFiles/glfw.dir/init.c.o	6f584cae2b82bdd6
+0	243	1654617692282440359	libs/glfw/src/CMakeFiles/glfw.dir/monitor.c.o	a1ecf6bcfef0c1cd
+0	257	1654617692297708370	libs/glfw/src/CMakeFiles/glfw.dir/input.c.o	e6e4de88cddf9b15
+0	381	1654617692422073192	CMakeFiles/glfw-starter.dir/src/window/Window.cpp.o	9b455a560a653b86
+0	408	1654617692449367926	CMakeFiles/glfw-starter.dir/src/main.cpp.o	317197646db0fc54
+242	452	1654617692492375802	libs/glfw/src/CMakeFiles/glfw.dir/platform.c.o	a974c0ab2b12c0b0
+243	458	1654617692498499540	libs/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o	114f561e0caa98f0
+243	466	1654617692506800803	libs/glfw/src/CMakeFiles/glfw.dir/window.c.o	605f602e98c9356
+257	480	1654617692520768798	libs/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o	939719eff239630
+381	598	1654617692638884298	libs/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o	ae8b54d5b8266aff
+408	627	1654617692667881927	libs/glfw/src/CMakeFiles/glfw.dir/null_init.c.o	60f097a85cbda1f8
+452	658	1654617692698510992	libs/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o	dc02a1246cc3c5e
+458	668	1654617692709184991	libs/glfw/src/CMakeFiles/glfw.dir/null_window.c.o	26197a5e7bd516b8
+466	675	1654617692715213936	libs/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o	2886c1876954e8d2
+480	687	1654617692728650260	libs/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o	6a5115f6a14de5cb
+598	802	1654617692843581389	libs/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o	9ce86500065510a7
+627	827	1654617692868491137	libs/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o	463f91171e96552
+668	1080	1654617693118368754	libs/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o	7c584cbfb6f0d3d1
+675	1082	1654617693122394509	libs/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o	417c8340df3b5c3d
+658	1086	1654617693125485837	libs/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o	ecb4251e31517a47
+688	1113	1654617693152976282	libs/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o	e1ae814bc1894ee6
+802	1190	1654617693230535851	libs/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o	c1c9dc53a50343dd
+1190	1212	1654617693256631000	libs/glfw/src/libglfw3.a	3fd75ed20501318
+1213	1290	1654617693332838584	glfw-starter	706a8582288aaf2
