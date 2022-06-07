@@ -9,6 +9,7 @@
 #include <string>
 #include <utility>
 #include <iostream>
+#include <chrono>
 #include <GLFW/glfw3.h>
 #include "../math/shapes/Arc.h"
 #include "../math/point/Point2D.h"
@@ -19,8 +20,13 @@ class Window {
 private:
     GLFWwindow *glfWwindow_;
 
+    bool disableCursorPosCallback_ = false;
+
+protected:
+    void init();
+
 public:
-    explicit Window(const string &title, unsigned int width, unsigned int height);
+    explicit Window(const string &title, int width, int height);
 
     ~Window() = default;
 
@@ -37,4 +43,10 @@ public:
     virtual void onDraw() {};
 
     virtual void onMouseMovement(Point2D position) {};
+
+    int getWindowWidth();
+
+    int getWindowHeight();
+
+    void captureMouseMovementsEach(chrono::microseconds microseconds);
 };

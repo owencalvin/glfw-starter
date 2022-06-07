@@ -13,6 +13,8 @@ private:
 
 public:
     Point3D(double x, double y, double z) : Point2D(x, y), z_(z) {}
+    
+    explicit Point3D(Point2D point2D, double z = 0) : Point2D(point2D), z_(z) {}
 
     [[nodiscard]] double getZ() const;
 

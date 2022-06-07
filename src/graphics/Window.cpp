@@ -4,8 +4,9 @@
 
 #include "Window.h"
 #include <iostream>
+#include <thread>
 
-Window::Window(const string &title, unsigned int width, unsigned int height) {
+Window::Window(const string &title, int width, int height) {
     glfwSetErrorCallback([](int error, const char *description) {
         cout << "GLFW error thrown (" << error << ")" << endl;
     });
@@ -15,26 +16,53 @@ Window::Window(const string &title, unsigned int width, unsigned int height) {
 
     glfwWindowHint(GLFW_SAMPLES, 8);
 
-    this->glfWwindow_ = glfwCreateWindow((int) width, (int) height, title.c_str(), nullptr, nullptr);
+    this->glfWwindow_ = glfwCreateWindow(500, 500, title.c_str(), nullptr, nullptr);
 
     if (!this->glfWwindow_) {
         cout << "Error while creating GLFW gui" << endl;
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
+}
+
+void Window::init() {
+    if (glfwRawMouseMotionSupported())
+        glfwSetInputMode(this->glfWwindow_, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+
+    glEnable(GL_MULTISAMPLE);
 
     glfwSetWindowUserPointer(this->glfWwindow_, this);
 
-    glfwSetCursorPosCallback(this->glfWwindow_, [](GLFWwindow *window, double x, double y) {
-        if (auto *w = static_cast<Window *>(glfwGetWindowUserPointer(window)))
-            w->onMouseMovement(Point2D(x, y));
-    });
+    if (!this->disableCursorPosCallback_) {
+        glfwSetCursorPosCallback(this->glfWwindow_, [](GLFWwindow *window, double x, double y) {
+            if (auto *w = static_cast<Window *>(glfwGetWindowUserPointer(window)))
+                w->onMouseMovement(Point2D(x, y));
+        });
+    }
 
     glfwMakeContextCurrent(this->glfWwindow_);
 }
 
 GLFWwindow *Window::getGLFWWindow() const {
     return glfWwindow_;
+}
+
+void Window::captureMouseMovementsEach(chrono::microseconds microseconds) {
+    this->disableCursorPosCallback_ = true;
+
+    thread mousePositionThread([&, microseconds] {
+        while (true) {
+            if (this->glfWwindow_ == nullptr) return;
+
+            double x, y;
+            glfwGetCursorPos(this->getGLFWWindow(), &x, &y);
+            this->onMouseMovement(Point2D(x, y));
+
+            this_thread::sleep_for(microseconds);
+        }
+    });
+
+    mousePositionThread.detach();
 }
 
 void Window::start() {
@@ -55,6 +83,18 @@ int Window::getFramebufferWidth() {
 int Window::getFramebufferHeight() {
     int height = 0;
     glfwGetFramebufferSize(this->glfWwindow_, nullptr, &height);
+    return height;
+}
+
+int Window::getWindowWidth() {
+    int width = 0;
+    glfwGetWindowSize(this->glfWwindow_, &width, nullptr);
+    return width;
+}
+
+int Window::getWindowHeight() {
+    int height = 0;
+    glfwGetWindowSize(this->glfWwindow_, nullptr, &height);
     return height;
 }
 

@@ -5,11 +5,6 @@
 #include "Arc.h"
 #include <iostream>
 
-ostream &operator<<(ostream &os, const Arc &arc) {
-    os << " center_: " << arc.center_ << " radius_: " << arc.radius_ << " angle_: " << arc.angle_;
-    return os;
-}
-
 const Point3D &Arc::getCenter() const {
     return center_;
 }
@@ -32,4 +27,9 @@ float Arc::getAngle() const {
 
 void Arc::setAngle(float angle) {
     angle_ = angle;
+}
+
+ostream &operator<<(ostream &os, const Arc &arc) {
+    os << " center_: (" << arc.center_ << ") radius_: " << arc.radius_ << " angle_: " << arc.angle_;
+    return os;
 }
