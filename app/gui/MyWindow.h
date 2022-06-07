@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "../graphics/Window.h"
+#include "../../src/graphics/Window.h"
 
 class MyWindow : public Window {
 private:
