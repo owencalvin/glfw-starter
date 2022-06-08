@@ -14,7 +14,9 @@ Window::Window(const string &title, int width, int height) {
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    glfwWindowHint(GLFW_SAMPLES, 8);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     this->glfWwindow_ = glfwCreateWindow(500, 500, title.c_str(), nullptr, nullptr);
 
@@ -68,6 +70,9 @@ void Window::captureMouseMovementsEach(chrono::microseconds microseconds) {
 void Window::start() {
     while (!glfwWindowShouldClose(this->glfWwindow_)) {
         this->onDraw();
+
+        glfwSwapBuffers(this->getGLFWWindow());
+        glfwPollEvents();
     }
 
     glfwDestroyWindow(this->glfWwindow_);

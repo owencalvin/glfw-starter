@@ -10,6 +10,8 @@
 class MyWindow : public Window {
 private:
     Spline spline_;
+    GLuint programID_;
+    vector<glm::vec2> drawPoints_;
 
     void onDraw() override;
 
